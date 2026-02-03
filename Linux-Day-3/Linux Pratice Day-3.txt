@@ -1,0 +1,259 @@
+Man Command
+--------------
+//It is used to get documentation about Linuxcommands.
+
+
+
+eg:
+//after excute the comaand  aa huge documentation will be show
+
+sumit@ubuntu:~$ man vi
+
+sumit@ubuntu:~$ man cat
+sumit@ubuntu:~$
+sumit@ubuntu:~$
+sumit@ubuntu:~$
+sumit@ubuntu:~$ man touch
+sumit@ubuntu:~$
+sumit@ubuntu:~$
+sumit@ubuntu:~$ man ltr
+No manual entry for ltr
+sumit@ubuntu:~$
+sumit@ubuntu:~$ man rm
+sumit@ubuntu:~$
+sumit@ubuntu:~$
+sumit@ubuntu:~$
+sumit@ubuntu:~$ man cleAR
+sumit@ubuntu:~$
+sumit@ubuntu:~$
+sumit@ubuntu:~$ man mv
+sumit@ubuntu:~$
+sumit@ubuntu:~$
+
+Locate Command
+-----------------
+
+//how to check locate version
+
+
+sumit@ubuntu:~$ locate --version
+locate (GNU findutils) 4.8.0
+Copyright (C) 2021 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+Written by Eric B. Decker, James Youngman, and Kevin Dalley.
+
+Find command 
+-----------------
+//It is used for more advance search in Linux Operating System.
+
+sumit@ubuntu:~$ ls
+behera  gyana  kumar  santosh  sumita
+
+sumit@ubuntu:~$ cd behera
+
+
+sumit@ubuntu:~/behera$ ls
+abc.txt  bmk.txt  hlo.txt  hlo.txt.  house.zip  lin.txt  mnk.txt  njo.txt  plj.txt  xyz.txt
+
+
+
+sumit@ubuntu:~/behera$ sudo find /home -name abc.txt
+
+
+/home/sumit/behera/abc.txt
+ 
+
+
+// command to find a empty file in Linux
+----------------------------------------
+sumit@ubuntu:~/behera$ sudo find /home -type f -empty
+
+/home/sumit/behera/abc.txt
+/home/sumit/behera/plj.txt
+/home/sumit/behera/bmk.txt
+/home/sumit/behera/hlo.txt.
+/home/sumit/behera/lin.txt
+/home/sumit/.sudo_as_admin_successful
+/home/sumit/.cache/motd.legal-displayed
+/home/sumit/.ssh/authorized_keys
+
+// how to find empty directory under home directory
+
+
+
+sumit@ubuntu:~/behera$ sudo find /home -type d -empty
+/home/sumit/sumita
+/home/sumit/gyana
+/home/sumit/kumar
+/home/sumit/Santosh
+
+
+//id command
+---------------
+To get the user account information id command is used
+
+
+sumit@ubuntu:~$
+sumit@ubuntu:~$ id sumit
+uid=1000(sumit) gid=1000(sumit) groups=1000(sumit),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),110(lxd)
+
+
+
+
+//How t5o switch root user account
+-----------------------------------
+sumit@ubuntu:~$ sudo su -
+root@ubuntu:~#
+root@ubuntu:~#
+
+
+log out from root user 
+--------------------------root@ubuntu:~# exit
+logout
+sumit@ubuntu:~$
+
+
+
+
+
+//How to add a new user 
+
+--------------------------
+
+sumit@ubuntu:~$ sudo su -
+root@ubuntu:~#
+root@ubuntu:~#
+root@ubuntu:~# adduser gyana
+Adding user `gyana' ...
+Adding new group `gyana' (1001) ...
+Adding new user `gyana' (1001) with group `gyana' ...
+Creating home directory `/home/gyana' ...
+Copying files from `/etc/skel' ...
+New password:
+Retype new password:
+passwd: password updated successfully
+Changing the user information for gyana
+Enter the new value, or press ENTER for the default
+        Full Name []: gyana
+        Room Number []:
+        Work Phone []:
+        Home Phone []:
+        Other []:
+Is the information correct? [Y/n]
+root@ubuntu:~#
+
+
+//how to check new user is created or not
+------------------------------------------
+root@ubuntu:~# adduser sumita
+Adding user `sumita' ...
+Adding new group `sumita' (1002) ...
+Adding new user `sumita' (1001) with group `sumita' ...
+Creating home directory `/home/sumita' ...
+Copying files from `/etc/skel' ...
+New password:
+Retype new password:
+passwd: password updated successfully
+Changing the user information for sumita
+Enter the new value, or press ENTER for the default
+        Full Name []:
+        Room Number []:
+        Work Phone []:
+        Home Phone []:
+        Other []:
+Is the information correct? [Y/n]
+root@ubuntu:~#
+root@ubuntu:~#
+root@ubuntu:~# cat /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+systemd-network:x:101:102:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:102:103:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:103:104::/nonexistent:/usr/sbin/nologin
+systemd-timesync:x:104:105:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+pollinate:x:105:1::/var/cache/pollinate:/bin/false
+syslog:x:106:113::/home/syslog:/usr/sbin/nologin
+uuidd:x:107:114::/run/uuidd:/usr/sbin/nologin
+tcpdump:x:108:115::/nonexistent:/usr/sbin/nologin
+tss:x:109:116:TPM software stack,,,:/var/lib/tpm:/bin/false
+landscape:x:110:117::/var/lib/landscape:/usr/sbin/nologin
+fwupd-refresh:x:111:118:fwupd-refresh user,,,:/run/systemd:/usr/sbin/nologin
+usbmux:x:112:46:usbmux daemon,,,:/var/lib/usbmux:/usr/sbin/nologin
+sshd:x:113:65534::/run/sshd:/usr/sbin/nologin
+sumit:x:1000:1000:ubuntu:/home/sumit:/bin/bash
+lxd:x:999:100::/var/snap/lxd/common/lxd:/bin/false
+sumita:x:1001:1002:,,,:/home/sumita:/bin/bash
+root@ubuntu:~#
+
+
+
+
+//Shifted one user to another
+
+
+sumit@ubuntu:~$ sudo su -
+root@ubuntu:~#
+root@ubuntu:~#
+root@ubuntu:~#
+root@ubuntu:~# su gyana
+gyana@ubuntu:/root$
+
+
+
+//Rename a user
+--------------------------
+gyana@ubuntu:/root$ usermod -l pankaj gyana
+usermod: user gyana is currently used by process 3124
+gyana@ubuntu:/root$ ^C
+gyana@ubuntu:/root$ exit
+exit
+root@ubuntu:~# usermod -l pankaj gyana
+root@ubuntu:~#
+root@ubuntu:~#
+root@ubuntu:~# su Pankaj
+
+
+
+//how to reset password
+-----------------------------
+pankaj@ubuntu:/root$ passwd pankaj
+Changing password for pankaj.
+Current password:
+passwd: Authentication token manipulation error
+passwd: password unchanged
+pankaj@ubuntu:/root$ passwd pankaj
+Changing password for pankaj.
+Current password:
+New password:
+Retype new password:
+passwd: password updated successfully
+pankaj@ubuntu:/root$
+
+
+//How to delete a user
+---------------------------------- 
+root@ubuntu:~# userdel sumita
+
+
+
+
