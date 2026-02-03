@@ -1,0 +1,591 @@
+
+
+sumit@ubuntu:~$ uname -a
+Linux ubuntu 5.15.0-168-generic #178-Ubuntu SMP Fri Jan 9 19:05:03 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
+sumit@ubuntu:~$
+sumit@ubuntu:~$
+sumit@ubuntu:~$ hostnameclt
+Command 'hostnameclt' not found, did you mean:
+  command 'hostnamectl' from deb systemd (249.11-0ubuntu3.17)
+Try: sudo apt install <deb name>
+sumit@ubuntu:~$
+sumit@ubuntu:~$
+sumit@ubuntu:~$ whoami
+sumit
+sumit@ubuntu:~$ date
+Sun Feb  1 03:52:54 PM UTC 2026
+sumit@ubuntu:~$ cal
+   February 2026
+Su Mo Tu We Th Fr Sa
+ 1  2  3  4  5  6  7
+ 8  9 10 11 12 13 14
+15 16 17 18 19 20 21
+22 23 24 25 26 27 28
+
+
+sumit@ubuntu:~$ uptime
+ 15:53:05 up  2:29,  2 users,  load average: 0.00, 0.00, 0.00
+sumit@ubuntu:~$ df
+Filesystem                        1K-blocks    Used Available Use% Mounted on
+tmpfs                                323448    1104    322344   1% /run
+/dev/mapper/ubuntu--vg-ubuntu--lv  15411564 6383588   8223320  44% /
+tmpfs                               1617228       0   1617228   0% /dev/shm
+tmpfs                                  5120       0      5120   0% /run/lock
+/dev/sda2                           1992552  132408   1738904   8% /boot
+tmpfs                                323444       4    323440   1% /run/user/1000
+sumit@ubuntu:~$
+sumit@ubuntu:~$
+sumit@ubuntu:~$ pwd
+/home/sumit
+sumit@ubuntu:~$ mkdir sumit santosh sarangi gyana behera kumar
+sumit@ubuntu:~$
+sumit@ubuntu:~$
+sumit@ubuntu:~$ ls
+behera  gyana  kumar  santosh  sarangi  sumit
+sumit@ubuntu:~$
+sumit@ubuntu:~$
+sumit@ubuntu:~$
+sumit@ubuntu:~$ cd kumar
+sumit@ubuntu:~/kumar$
+sumit@ubuntu:~/kumar$
+sumit@ubuntu:~/kumar$ cd sarangi
+-bash: cd: sarangi: No such file or directory
+sumit@ubuntu:~/kumar$ cd ..
+sumit@ubuntu:~$
+sumit@ubuntu:~$
+sumit@ubuntu:~$ cd sarangi
+sumit@ubuntu:~/sarangi$    pwd
+/home/sumit/sarangi
+sumit@ubuntu:~/sarangi$
+sumit@ubuntu:~/sarangi$
+sumit@ubuntu:~/sarangi$ cd ..
+sumit@ubuntu:~$
+sumit@ubuntu:~$
+sumit@ubuntu:~$ rm sarangi
+rm: cannot remove 'sarangi': Is a directory
+sumit@ubuntu:~$
+sumit@ubuntu:~$ rm -r sarangi
+sumit@ubuntu:~$
+sumit@ubuntu:~$
+sumit@ubuntu:~$ ls
+behera  gyana  kumar  santosh  sumit
+sumit@ubuntu:~$
+sumit@ubuntu:~$
+sumit@ubuntu:~$ cd behera
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$ touch abc.txt
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$ ls
+abc.txt
+sumit@ubuntu:~/behera$ cd ..
+sumit@ubuntu:~$
+sumit@ubuntu:~$
+sumit@ubuntu:~$ ls
+behera  gyana  kumar  santosh  sumit
+sumit@ubuntu:~$
+sumit@ubuntu:~$
+sumit@ubuntu:~$ ^C
+sumit@ubuntu:~$sumit@ubuntu:~$
+sumit@ubuntu:~$ ls
+behera  gyana  kumar  santosh  sumit
+sumit@ubuntu:~$ ls -n
+total 20
+drwxrwxr-x 2 1000 1000 4096 Feb  1 15:56 behera
+drwxrwxr-x 2 1000 1000 4096 Feb  1 15:54 gyana
+drwxrwxr-x 2 1000 1000 4096 Feb  1 15:54 kumar
+drwxrwxr-x 2 1000 1000 4096 Feb  1 15:54 santosh
+drwxrwxr-x 2 1000 1000 4096 Feb  1 15:54 sumit
+sumit@ubuntu:~$ mv sumit sumita
+sumit@ubuntu:~$
+sumit@ubuntu:~$
+sumit@ubuntu:~$
+sumit@ubuntu:~$ ls
+behera  gyana  kumar  santosh  sumita
+sumit@ubuntu:~$ cd behera
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$ ls
+abc.txt
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$ mv behera beherask
+mv: cannot stat 'behera': No such file or directory
+sumit@ubuntu:~/behera$ mv abc.txt def.txt
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$ ls
+def.txt
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$ touch abc.txt
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$ ls
+abc.txt  def.txt
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$ rm def.txt
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$ ls
+abc.txt
+sumit@ubuntu:~/behera$
+
+
+
+sumit@ubuntu:~$
+sumit@ubuntu:~$ ls
+behera  gyana  kumar  santosh  sumit
+sumit@ubuntu:~$ ls -n
+total 20
+drwxrwxr-x 2 1000 1000 4096 Feb  1 15:56 behera
+drwxrwxr-x 2 1000 1000 4096 Feb  1 15:54 gyana
+drwxrwxr-x 2 1000 1000 4096 Feb  1 15:54 kumar
+drwxrwxr-x 2 1000 1000 4096 Feb  1 15:54 santosh
+drwxrwxr-x 2 1000 1000 4096 Feb  1 15:54 sumit
+sumit@ubuntu:~$ mv sumit sumita
+sumit@ubuntu:~$
+sumit@ubuntu:~$
+sumit@ubuntu:~$
+sumit@ubuntu:~$ ls
+behera  gyana  kumar  santosh  sumita
+sumit@ubuntu:~$ cd behera
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$ ls
+abc.txt
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$ mv behera beherask
+mv: cannot stat 'behera': No such file or directory
+sumit@ubuntu:~/behera$ mv abc.txt def.txt
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$ ls
+def.txt
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$ touch abc.txt
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$ ls
+abc.txt  def.txt
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$ rm def.txt
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$ ls
+abc.txt
+sumit@ubuntu:~/behera$ cat >mnk.txt
+it is a new file
+i created the file
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$ cat mnk.txt
+it is a new file
+i created the file
+sumit@ubuntu:~/behera$
+
+
+History Command 
+----------------
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$ history
+    1  clr
+    2  clear
+    3  mkdir sumit
+    4  ls
+    5  pwd
+    6  cat/etc/os-release
+    7  hostnamectl
+    8  uname
+    9  uname -a
+   10  whoami
+   11  date
+   12  cal
+   13  sudo apt install ncal
+   14  cal
+   15  ls
+   16  mkdir kumar
+   17  mkdir behera gyana
+   18  ls
+   19  cd sumit
+   20  cd ..
+   21  cd sumit
+   22  pwd
+   23  cd..
+   24  cd ..
+   25  pwd
+   26  rm sumit
+   27  rmsumit
+   28  rm -r sumit
+   29  ls
+   30  rm -r gyana
+   31  pwd
+   32  ls
+   33  mkdir sumit
+   34  mkdir gyana santosh
+   35  ls
+   36  rm kumar
+   37  touch abc
+   38  ls
+   39  cd abc
+   40  cat abc
+   41  rm abc
+   42  pwd
+   43  cd behera
+   44  pwd
+   45  ls
+   46  cd ..
+   47  pwd
+   48  clear
+   49  ls
+   50  rm -r behera gyana kumar santosh sumit
+   51  ls
+   52  clear
+   53  username -a
+   54  clear
+   55  uname -a
+   56  hostnameclt
+   57  whoami
+   58  date
+   59  cal
+   60  uptime
+   61  df
+   62  pwd
+   63  mkdir sumit santosh sarangi gyana behera kumar
+   64  ls
+   65  cd kumar
+   66  cd sarangi
+   67  cd ..
+   68  cd sarangi
+   69  cd ..
+   70  rm sarangi
+   71  rm -r sarangi
+   72  ls
+   73  cd behera
+   74  touch abc.txt
+   75  ls
+   76  cd ..
+   77  ls
+   78  clear
+   79  ls
+   80  ls -n
+   81  mv sumit sumita
+   82  ls
+   83  cd behera
+   84  ls
+   85  mv behera beherask
+   86  mv abc.txt def.txt
+   87  ls
+   88  touch abc.txt
+   89  ls
+   90  rm def.txt
+   91  ls
+   92  cat >mnk.txt
+   93  cat mnk.txt
+   94  history
+sumit@ubuntu:~/behera$
+
+
+
+ls command
+---------------
+sumit@ubuntu:~/behera$ ls
+abc.txt  mnk.txt
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$ ls -l
+total 4
+-rw-rw-r-- 1 sumit sumit  0 Feb  1 16:00 abc.txt
+-rw-rw-r-- 1 sumit sumit 36 Feb  1 16:02 mnk.txt
+sumit@ubuntu:~/behera$ touch bmk.txt hlo.txt. plj.txt  njo.txt lin.txt
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$ ls
+abc.txt  bmk.txt  hlo.txt.  lin.txt  mnk.txt  njo.txt  plj.txt
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$ ls -l
+total 4
+-rw-rw-r-- 1 sumit sumit  0 Feb  1 16:00 abc.txt
+-rw-rw-r-- 1 sumit sumit  0 Feb  1 16:07 bmk.txt
+-rw-rw-r-- 1 sumit sumit  0 Feb  1 16:07 hlo.txt.
+-rw-rw-r-- 1 sumit sumit  0 Feb  1 16:07 lin.txt
+-rw-rw-r-- 1 sumit sumit 36 Feb  1 16:02 mnk.txt
+-rw-rw-r-- 1 sumit sumit  0 Feb  1 16:07 njo.txt
+-rw-rw-r-- 1 sumit sumit  0 Feb  1 16:07 plj.txt
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$ ls -lr
+total 4
+-rw-rw-r-- 1 sumit sumit  0 Feb  1 16:07 plj.txt
+-rw-rw-r-- 1 sumit sumit  0 Feb  1 16:07 njo.txt
+-rw-rw-r-- 1 sumit sumit 36 Feb  1 16:02 mnk.txt
+-rw-rw-r-- 1 sumit sumit  0 Feb  1 16:07 lin.txt
+-rw-rw-r-- 1 sumit sumit  0 Feb  1 16:07 hlo.txt.
+-rw-rw-r-- 1 sumit sumit  0 Feb  1 16:07 bmk.txt
+-rw-rw-r-- 1 sumit sumit  0 Feb  1 16:00 abc.txt
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$ ls -lt
+total 4
+-rw-rw-r-- 1 sumit sumit  0 Feb  1 16:07 bmk.txt
+-rw-rw-r-- 1 sumit sumit  0 Feb  1 16:07 hlo.txt.
+-rw-rw-r-- 1 sumit sumit  0 Feb  1 16:07 lin.txt
+-rw-rw-r-- 1 sumit sumit  0 Feb  1 16:07 njo.txt
+-rw-rw-r-- 1 sumit sumit  0 Feb  1 16:07 plj.txt
+-rw-rw-r-- 1 sumit sumit 36 Feb  1 16:02 mnk.txt
+-rw-rw-r-- 1 sumit sumit  0 Feb  1 16:00 abc.txt
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$ ls -ltr
+total 4
+-rw-rw-r-- 1 sumit sumit  0 Feb  1 16:00 abc.txt
+-rw-rw-r-- 1 sumit sumit 36 Feb  1 16:02 mnk.txt
+-rw-rw-r-- 1 sumit sumit  0 Feb  1 16:07 plj.txt
+-rw-rw-r-- 1 sumit sumit  0 Feb  1 16:07 njo.txt
+-rw-rw-r-- 1 sumit sumit  0 Feb  1 16:07 lin.txt
+-rw-rw-r-- 1 sumit sumit  0 Feb  1 16:07 hlo.txt.
+-rw-rw-r-- 1 sumit sumit  0 Feb  1 16:07 bmk.txt
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$ ls -la
+total 12
+drwxrwxr-x 2 sumit sumit 4096 Feb  1 16:07 .
+drwxr-x--- 9 sumit sumit 4096 Feb  1 15:59 ..
+-rw-rw-r-- 1 sumit sumit    0 Feb  1 16:00 abc.txt
+-rw-rw-r-- 1 sumit sumit    0 Feb  1 16:07 bmk.txt
+-rw-rw-r-- 1 sumit sumit    0 Feb  1 16:07 hlo.txt.
+-rw-rw-r-- 1 sumit sumit    0 Feb  1 16:07 lin.txt
+-rw-rw-r-- 1 sumit sumit   36 Feb  1 16:02 mnk.txt
+-rw-rw-r-- 1 sumit sumit    0 Feb  1 16:07 njo.txt
+-rw-rw-r-- 1 sumit sumit    0 Feb  1 16:07 plj.txt
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$ ls -ltra
+total 12
+drwxr-x--- 9 sumit sumit 4096 Feb  1 15:59 ..
+-rw-rw-r-- 1 sumit sumit    0 Feb  1 16:00 abc.txt
+-rw-rw-r-- 1 sumit sumit   36 Feb  1 16:02 mnk.txt
+-rw-rw-r-- 1 sumit sumit    0 Feb  1 16:07 plj.txt
+-rw-rw-r-- 1 sumit sumit    0 Feb  1 16:07 njo.txt
+-rw-rw-r-- 1 sumit sumit    0 Feb  1 16:07 lin.txt
+-rw-rw-r-- 1 sumit sumit    0 Feb  1 16:07 hlo.txt.
+-rw-rw-r-- 1 sumit sumit    0 Feb  1 16:07 bmk.txt
+drwxrwxr-x 2 sumit sumit 4096 Feb  1 16:07 .
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$
+
+
+
+catcommand 
+-----------
+sumit@ubuntu:~/behera$ cat -n hlo.txt
+     1  this my name
+     2
+     3  and mname is sumit
+     4  mi ascnjskjbskjcbkc
+     5  kbcjfbyfgqhfhfbhfb
+     6  efhievievieviuvhqiefvviqe
+     7  scahiuuiviuesumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$ cat >>hlo.txt
+illnddbeeeheee
+ddppnnsbsgsyysb svsfs
+mmssgsgststhhshjsju
+mmskksksumit@ubuntu:~/behera$ ls
+abc.txt  bmk.txt  hlo.txt  hlo.txt.  lin.txt  mnk.txt  njo.txt  plj.txt
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$ cat -n hlo.txt
+     1  this my name
+     2
+     3  and mname is sumit
+     4  mi ascnjskjbskjcbkc
+     5  kbcjfbyfgqhfhfbhfb
+     6  efhievievieviuvhqiefvviqe
+     7  scahiuuiviueillnddbeeeheee
+     8  ddppnnsbsgsyysb svsfs
+     9  mmssgsgststhhshjsju
+    10  mmskksk
+
+
+
+
+Cat Command
+
+sumit@ubuntu:~$ cd behera
+sumit@ubuntu:~/behera$ wc
+^C
+sumit@ubuntu:~/behera$ wc
+jdvjakjdvkjdvjkjnbdjvbb      0       1      23
+sumit@ubuntu:~/behera$ cat behera
+cat: behera: No such file or directory
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$ ls
+abc.txt  bmk.txt  hlo.txt  hlo.txt.  lin.txt  mnk.txt  njo.txt  plj.txt
+sumit@ubuntu:~/behera$ cat >hlo.txt
+sjjbhbhbhjiwhjhhshsvchscv
+bbbjjokasshshshhshshshhs
+xadkioklll,ndbcbjbwjbjw
+weubdhvb nhvhcvhvbhhcvhhbsumit@ubuntu:~/behera$ cat -n hlo.txt
+     1  sjjbhbhbhjiwhjhhshsvchscv
+     2  bbbjjokasshshshhshshshhs
+     3  xadkioklll,ndbcbjbwjbjw
+     4  weubdhvb nhvhcvhvbhhcvhhbsumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$ cat>hlo.txt
+assssdkkdkdududndnd ddhdhjjdsks
+nsjhsystsststtgjkksksm
+sumit@ubuntu:~/behera$ cat hlo.txt
+assssdkkdkdududndnd ddhdhjjdsks
+nsjhsystsststtgjkksksm
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$ cat >>hlo.txt
+kkssiwiwuhhddbbdbdb
+nsbbshshhssjsnnnaaaaaa
+laaaaaaaaa
+naaaaaa
+annnnnannnn
+muuuuuuaa
+lppppppp
+ssjdjjdjdjddd
+mkkkkoool
+sxxaoppqowiwuwhdbbd
+scddjjjjjjjjjd
+ncjhbchjadhcadcahschabscabshc
+jskkasnshhewiwiwwsnsns d d
+azxmnbvciuy
+wsxrfyhbikmsumit@ubuntu:~/behera$ cat hlo.txt
+assssdkkdkdududndnd ddhdhjjdsks
+nsjhsystsststtgjkksksm
+kkssiwiwuhhddbbdbdb
+nsbbshshhssjsnnnaaaaaa
+laaaaaaaaa
+naaaaaa
+annnnnannnn
+muuuuuuaa
+lppppppp
+ssjdjjdjdjddd
+mkkkkoool
+sxxaoppqowiwuwhdbbd
+scddjjjjjjjjjd
+ncjhbchjadhcadcahschabscabshc
+jskkasnshhewiwiwwsnsns d d
+azxmnbvciuy
+wsxrfyhbikmsumit@ubuntu:~/behera$ cat -n hlo.txt
+     1  assssdkkdkdududndnd ddhdhjjdsks
+     2  nsjhsystsststtgjkksksm
+     3  kkssiwiwuhhddbbdbdb
+     4  nsbbshshhssjsnnnaaaaaa
+     5  laaaaaaaaa
+     6  naaaaaa
+     7  annnnnannnn
+     8  muuuuuuaa
+     9  lppppppp
+    10  ssjdjjdjdjddd
+    11  mkkkkoool
+    12  sxxaoppqowiwuwhdbbd
+    13  scddjjjjjjjjjd
+    14  ncjhbchjadhcadcahschabscabshc
+    15  jskkasnshhewiwiwwsnsns d d
+    16  azxmnbvciuy
+    17  wsxrfyhbikm
+
+
+WC command
+------------
+sumit@ubuntu:~/behera$ wc hlo.txt
+ 16  20 288 hlo.txt
+
+
+
+
+Head//Tail Command
+---------------------
+sumit@ubuntu:~/behera$ cat -n hlo
+cat: hlo: No such file or directory
+sumit@ubuntu:~/behera$ cat -n hlo.txt
+     1  assssdkkdkdududndnd ddhdhjjdsks
+     2  nsjhsystsststtgjkksksm
+     3  kkssiwiwuhhddbbdbdb
+     4  nsbbshshhssjsnnnaaaaaa
+     5  laaaaaaaaa
+     6  naaaaaa
+     7  annnnnannnn
+     8  muuuuuuaa
+     9  lppppppp
+    10  ssjdjjdjdjddd
+    11  mkkkkoool
+    12  sxxaoppqowiwuwhdbbd
+    13  scddjjjjjjjjjd
+    14  ncjhbchjadhcadcahschabscabshc
+    15  jskkasnshhewiwiwwsnsns d d
+    16  azxmnbvciuy
+    17  wsxrfyhbikmsumit@ubuntu:~/behera$ head hlo.txt
+assssdkkdkdududndnd ddhdhjjdsks
+nsjhsystsststtgjkksksm
+kkssiwiwuhhddbbdbdb
+nsbbshshhssjsnnnaaaaaa
+laaaaaaaaa
+naaaaaa
+annnnnannnn
+muuuuuuaa
+lppppppp
+ssjdjjdjdjddd
+sumit@ubuntu:~/behera$ head -n hlo.txt
+head: invalid number of lines: ‘hlo.txt’
+sumit@ubuntu:~/behera$ head -n 10 hlo.txt
+assssdkkdkdududndnd ddhdhjjdsks
+nsjhsystsststtgjkksksm
+kkssiwiwuhhddbbdbdb
+nsbbshshhssjsnnnaaaaaa
+laaaaaaaaa
+naaaaaa
+annnnnannnn
+muuuuuuaa
+lppppppp
+ssjdjjdjdjddd
+sumit@ubuntu:~/behera$ head hlo.txt
+assssdkkdkdududndnd ddhdhjjdsks
+nsjhsystsststtgjkksksm
+kkssiwiwuhhddbbdbdb
+nsbbshshhssjsnnnaaaaaa
+laaaaaaaaa
+naaaaaa
+annnnnannnn
+muuuuuuaa
+lppppppp
+ssjdjjdjdjddd
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$ tail hlo.txt
+muuuuuuaa
+lppppppp
+ssjdjjdjdjddd
+mkkkkoool
+sxxaoppqowiwuwhdbbd
+scddjjjjjjjjjd
+ncjhbchjadhcadcahschabscabshc
+jskkasnshhewiwiwwsnsns d d
+azxmnbvciuy
+wsxrfyhbikmsumit@ubuntu:~/behera$ tail -n 5 hlo.txt
+scddjjjjjjjjjd
+ncjhbchjadhcadcahschabscabshc
+jskkasnshhewiwiwwsnsns d d
+azxmnbvciuy
+wsxrfyhbikmsumit@ubuntu:~/behera$ head -n 5 hlo.txt
+assssdkkdkdududndnd ddhdhjjdsks
+nsjhsystsststtgjkksksm
+kkssiwiwuhhddbbdbdb
+nsbbshshhssjsnnnaaaaaa
+laaaaaaaaa

@@ -1,0 +1,467 @@
+Steps To open and use Text editor
+---------------------------------
+case-1
+..........
+
+//Checked the file 
+sumit@ubuntu:~/behera$ ls
+abc.txt  bmk.txt  hlo.txt  hlo.txt.  lin.txt  mnk.txt  njo.txt  plj.txt
+
+
+
+
+//Check which content are available insithe the file
+
+sumit@ubuntu:~/behera$ cat hlo.txt
+
+
+I am a student .
+I am learning linux.
+I want to became a devoops Engineer
+There is a cow .
+Dog is animal.
+
+
+Edit process
+
+sumit@ubuntu:~/behera$ vi hlo.txt
+
+//after that use I command for insert
+//after enete use esc button 
+//then use :wq for save if we don't want to ave we use :q!
+
+sumit@ubuntu:~/behera$ cat hlo.txt
+
+// In out5 put new line is added
+I am a student .
+I am learning linux.
+I want to became a devoops Engineer
+There is a cow .
+Dog is animal.
+I am  going to bbsr.
+
+
+Case-2
+............
+
+
+sumit@ubuntu:~/behera$ ls
+abc.txt  bmk.txt  hlo.txt  hlo.txt.  lin.txt  mnk.txt  njo.txt  plj.txt
+
+In my directory there is no xyz.txt file the we use Vi.txt command  the Linux will create a new file and allow us to edit the file.
+
+
+
+sumit@ubuntu:~/behera$ vi xyz.txt
+sumit@ubuntu:~/behera$
+
+
+
+
+SED commands in Linux
+-------------------------
+
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$ cat hlo.txt
+
+
+
+I am a student .
+I am learning linux.
+I want to became a devoops Engineer
+There is a cow .
+Dog is animal.
+I am  going to bbsr.
+
+
+//after using se command  all is is converted to was
+
+ 
+sumit@ubuntu:~/behera$ sed 's/am/was/' hlo.txt
+
+
+
+
+I was a student .
+I was learning linux.
+I want to becwase a devoops Engineer
+There is a cow .
+Dog is animal.
+I was  going to bbsr.
+
+
+//But it is not change on the original file it changes on a new duplicate file
+
+
+sumit@ubuntu:~/behera$ ls
+abc.txt  bmk.txt  hlo.txt  hlo.txt.  lin.txt  mnk.txt  njo.txt  plj.txt  xyz.txt
+
+// but in original file old things are available
+
+sumit@ubuntu:~/behera$ cat hlo.txt
+
+
+I am a student .
+I am learning linux.
+I want to became a devoops Engineer
+There is a cow .
+Dog is animal.
+I am  going to bbsr.
+
+
+
+//to make changes on original file we have to use -i
+-------------------------------------------------------
+sumit@ubuntu:~/behera$ sed -i 's/am/was/' hlo.txt
+
+
+
+
+
+sumit@ubuntu:~/behera$ cat hlo.txt
+
+
+// after use -i original file changed
+
+
+I was a student .
+I was learning linux.
+I want to becwase a devoops Engineer
+There is a cow .
+Dog is animal.
+I was  going to bbsr.
+
+
+
+to delete last line
+-------------------
+sumit@ubuntu:~/behera$ cat hlo.txt
+
+I was a student .
+I was learning linux.
+I want to becwase a devoops Engineer
+There is a cow .
+Dog is animal.
+I was  going to bbsr.
+
+
+
+sumit@ubuntu:~/behera$ sed -i '$d'  hlo.txt
+
+
+
+sumit@ubuntu:~/behera$ cat hlo.txt
+
+
+//Last Line was Deleted
+
+I was a student .
+I was learning linux.
+I want to becwase a devoops Engineer
+There is a cow .
+Dog is animal.
+
+
+
+//to delete 1st 3 line use command
+
+umit@ubuntu:~/behera$ sed -i '3d' hlo.txt
+
+
+//to delete last 3 line use command
+
+
+sumit@ubuntu:~/behera$ sed -i '3,$d' hlo.txt
+
+
+
+
+
+
+
+
+grep (Global Regular Expression Print) command
+--------------------------------------------------
+
+
+sumit@ubuntu:~/behera$ cat njo.txt
+He is a boy.
+May be he gone.
+I have a pen.
+I will go to office.
+Santos is good boy.
+Sumit is going to school.
+I am alone.
+
+sumit@ubuntu:~/behera$ grep 'is' njo.txt
+He is a boy.
+Santos is good boy.
+Sumit is going to school.
+
+
+
+
+//to avoid case sensitive we use -i with grep command
+
+sumit@ubuntu:~/behera$ grep  -i 'iS' njo.txt
+He is a boy.
+Santos is good boy.
+Sumit is going to school.
+sumit@ubuntu:~/behera$
+
+
+
+// to know on which line it is we use -ni
+
+
+sumit@ubuntu:~/behera$ grep  -i 'iS' njo.txt
+He is a boy.
+Santos is good boy.
+Sumit is going to school.
+sumit@ubuntu:~/behera$ grep  -ni 'iS' njo.txt
+1:He is a boy.
+5:Santos is good boy.
+6:Sumit is going to school.
+
+
+
+sumit@ubuntu:~/behera$ grep  -in 'iS' njo.txt
+1:He is a boy.
+5:Santos is good boy.
+6:Sumit is going to school.
+sumit@ubuntu:~/behera$
+
+
+//to ignore data we use -v  
+sumit@ubuntu:~/behera$ grep  -v 'is' njo.txt
+May be he gone.
+I have a pen.
+I will go to office.
+I am alone.
+
+//to avoid case sensitive we use -i
+
+
+
+sumit@ubuntu:~/behera$ grep  -v 'is' njo.txt
+May be he gone.
+I have a pen.
+I will go to office.
+I am alone.
+
+sumit@ubuntu:~/behera$ grep  -vi 'is' njo.txt
+May be he gone.
+I have a pen.
+I will go to office.
+I am alone.
+
+sumit@ubuntu:~/behera$ grep  -iv'is' njo.txt
+^C
+sumit@ubuntu:~/behera$ grep  -iv  'Is' njo.txt
+May be he gone.
+I have a pen.
+I will go to office.
+I am alone.
+
+sumit@ubuntu:~/behera$ grep  -vi  'Is' njo.txt
+May be he gone.
+I have a pen.
+I will go to office.
+I am alone.
+
+sumit@ubuntu:~/behera$ grep  -vin  'Is' njo.txt
+2:May be he gone.
+3:I have a pen.
+4:I will go to office.
+7:I am alone.
+
+
+
+
+
+ZIP files in Linux
+-----------------------------
+sumit@ubuntu:~/behera$ zip file bmk.txt hlo.txt njo.txt
+  adding: bmk.txt (stored 0%)
+  adding: hlo.txt (stored 0%)
+  adding: njo.txt (deflated 24%)
+
+
+sumit@ubuntu:~/behera$ ls
+abc.txt  bmk.txt  file.zip  hlo.txt  hlo.txt.  lin.txt  mnk.txt  njo.txt  plj.txt  xyz.txt
+sumit@ubuntu:~/behera$ zip omghdk bmk.txt hlo.txt njo.txt
+  adding: bmk.txt (stored 0%)
+  adding: hlo.txt (stored 0%)
+  adding: njo.txt (deflated 24%)
+
+sumit@ubuntu:~/behera$ ls
+abc.txt  bmk.txt  file.zip  hlo.txt  hlo.txt.  lin.txt  mnk.txt  njo.txt  omghdk.zip  plj.txt  xyz.txt
+
+
+//How to se what files inside a zip file
+----------------------------------------
+sumit@ubuntu:~/behera$ zip -sf file.zip
+Archive contains:
+  bmk.txt
+  hlo.txt
+  njo.txt
+Total 3 entries (171 bytes)
+
+
+//How to add more command insi a zip file
+
+
+sumit@ubuntu:~/behera$ zip omghdk abc.txt
+  adding: abc.txt (stored 0%)
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$ ls
+abc.txt  bmk.txt  file.zip  hlo.txt  hlo.txt.  lin.txt  mnk.txt  njo.txt  omghdk.zip  plj.txt  xyz.txt
+
+
+sumit@ubuntu:~/behera$ zip -sf omghdk.zip
+Archive contains:
+  bmk.txt
+  hlo.txt
+  njo.txt
+  abc.txt
+Total 4 entries (171 bytes)
+
+
+
+
+How to delete a file from a Zip file
+-------------------------------------
+sumit@ubuntu:~/behera$ zip -d omghdk.zip   abc.txt
+deleting: abc.txt
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$ zip -sf omghdk.zip
+Archive contains:
+  bmk.txt
+  hlo.txt
+  njo.txt
+Total 3 entries (171 bytes)
+
+
+
+//How to un zip a zip file
+
+
+abc.txt  file.zip  hlo.txt.  lin.txt  mnk.txt  omghdk.zip  plj.txt  xyz.txt
+
+
+
+sumit@ubuntu:~/behera$ unzip omghdk
+Archive:  omghdk.zip
+ extracting: bmk.txt
+ extracting: hlo.txt
+  inflating: njo.txt
+
+
+
+
+sumit@ubuntu:~/behera$ ls
+abc.txt  bmk.txt  file.zip  hlo.txt  hlo.txt.  lin.txt  mnk.txt  njo.txt  omghdk.zip  plj.txt  xyz.txt
+
+//To delete a zip File
+
+
+sumit@ubuntu:~/behera$ rm -r file.zip
+su
+sumit@ubuntu:~/behera$ ls
+abc.txt  bmk.txt  hlo.txt  hlo.txt.  lin.txt  mnk.txt  njo.txt  omghdk.zip  plj.txt  xyz.txt
+
+
+
+
+//Zip all files to of a folder to zip file
+
+
+
+sumit@ubuntu:~/behera$ zip behera *
+  adding: abc.txt (stored 0%)
+  adding: bmk.txt (stored 0%)
+  adding: hlo.txt (stored 0%)
+  adding: hlo.txt. (stored 0%)
+  adding: lin.txt (stored 0%)
+  adding: mnk.txt (deflated 6%)
+  adding: njo.txt (deflated 24%)
+  adding: plj.txt (stored 0%)
+  adding: xyz.txt (stored 0%)
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$
+sumit@ubuntu:~/behera$ ls
+abc.txt  behera.zip  bmk.txt  hlo.txt  hlo.txt.  lin.txt  mnk.txt  njo.txt  plj.txt  xyz.txt
+
+
+
+
+
+
+How to create a ip file with encryption(With password)
+--------------------------------------------------------------
+
+sumit@ubuntu:~/behera$ zip -e house *
+Enter password:
+Verify password:
+  adding: abc.txt (stored 0%)
+  adding: bmk.txt (stored 0%)
+  adding: hlo.txt (stored 0%)
+  adding: hlo.txt. (stored 0%)
+  adding: lin.txt (stored 0%)
+  adding: mnk.txt (deflated 6%)
+  adding: njo.txt (deflated 24%)
+  adding: plj.txt (stored 0%)
+  adding: xyz.txt (stored 0%)
+
+
+
+sumit@ubuntu:~/behera$ ls
+abc.txt  bmk.txt  hlo.txt  hlo.txt.  house.zip  lin.txt  mnk.txt  njo.txt  plj.txt  xyz.txt
+
+
+
+//Un zip a encrepet zip file
+------------------------------
+sumit@ubuntu:~/behera$ unzip house
+Archive:  house.zip
+[house.zip] abc.txt password:
+ extracting: abc.txt
+ extracting: bmk.txt
+ extracting: hlo.txt
+ extracting: hlo.txt.
+ extracting: lin.txt
+  inflating: mnk.txt
+  inflating: njo.txt
+ extracting: plj.txt
+ extracting: xyz.txt
+sumit@ubuntu:~/behera$ ls
+
+
+abc.txt  bmk.txt  hlo.txt  hlo.txt.  house.zip  lin.txt  mnk.txt  njo.txt  plj.txt  xyz.txt
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
