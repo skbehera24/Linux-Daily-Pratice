@@ -1,0 +1,442 @@
+User and Group Management 
+================================
+
+switch to root
+----------------
+command:sudo su -
+
+
+sumit@ubuntu:~$ sudo su -
+[sudo] password for sumit:
+
+
+
+Exit Root user
+------------------
+
+command:exit
+
+//After exit agaoin came to  normal user
+
+
+root@ubuntu:~# exit
+logout
+sumit@ubuntu:~$
+
+
+
+create user
+--------------------
+command :useradd username
+
+
+sumit@ubuntu:~$ useradd nanda
+useradd: Permission denied.
+
+//Denided because sumit user donot do it
+
+
+useradd: cannot lock /etc/passwd; try again later.
+sumit@ubuntu:~$ sudo useradd nanda
+
+
+
+set password to user
+---------------------
+sumit@ubuntu:~$ sudo passwd nanda
+New password:
+Retype new password:
+passwd: password updated successfully
+
+
+
+display user info
+---------------------
+
+//command -id username
+
+sumit@ubuntu:~$ id nanda
+uid=1002(nanda) gid=1004(nanda) groups=1004(nanda)
+sumit@ubuntu:~$
+
+
+Delete user
+------------------
+
+command- userdel username
+
+or   userdel username --remove
+
+
+
+root@ubuntu:~# userdel pramit --remove
+userdel: pramit mail spool (/var/mail/pramit) not found
+userdel: pramit home directory (/home/pramit) not found
+root@ubuntu:~#
+
+
+
+
+switch user
+--------------
+command  : su username
+
+
+root@ubuntu:~# adduser akshay
+Adding user `akshay' ...
+Adding new group `akshay' (1005) ...
+Adding new user `akshay' (1001) with group `akshay' ...
+Creating home directory `/home/akshay' ...
+Copying files from `/etc/skel' ...
+New password:
+Retype new password:
+passwd: password updated successfully
+Changing the user information for akshay
+Enter the new value, or press ENTER for the default
+        Full Name []:
+        Room Number []:
+        Work Phone []:
+        Home Phone []:
+        Other []:
+Is the information correct? [Y/n] y
+root@ubuntu:~#
+root@ubuntu:~#
+root@ubuntu:~#
+root@ubuntu:~#
+root@ubuntu:~# su akshay
+
+
+akshay@ubuntu:/root$
+
+
+
+Rename user
+-------------------
+
+command:  usermod -l newname oldname
+
+
+root@ubuntu:~#
+root@ubuntu:~# usermod -l pankaja pankaj
+
+
+
+
+
+root@ubuntu:~# cat /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+
+sumit:x:1000:1000:ubuntu:/home/sumit:/bin/bash
+lxd:x:999:100::/var/snap/lxd/common/lxd:/bin/false
+
+
+
+pankaja:x:1001:1003::/home/pankaj:/bin/sh
+root@ubuntu:~#
+
+
+
+
+
+
+
+Group Management
+============================
+Display groups:
+-------------------
+command
+-----------
+cat /etc/group
+
+root@ubuntu:~# cat /etc/group
+root:x:0:
+daemon:x:1:
+bin:x:2:
+sys:x:3:
+adm:x:4:syslog,sumit
+tty:x:5:
+disk:x:6:
+plugdev:x:46:sumit
+staff:x:50:
+games:x:60:
+users:x:100:
+nogroup:x:65534:
+systemd-journal:x:101:
+lxd:x:110:sumit
+_ssh:x:111:
+crontab:x:112:
+syslog:x:113:
+uuidd:x:114:
+tcpdump:x:115:
+tss:x:116:
+landscape:x:117:
+fwupd-refresh:x:118:
+sumit:x:1000:
+gyana:x:1001:
+Bibek:x:1002:
+pankaj:x:1003:
+
+
+
+Create group:
+====================
+
+groupadd group-name
+
+
+
+
+root@ubuntu:~# groupadd dinesh
+
+root@ubuntu:~# cat /etc/group
+root:x:0:
+daemon:x:1:
+bin:x:2:
+sys:x:3:
+adm:x:4:syslog,sumit
+tty:x:5:
+
+sumit:x:1000:
+gyana:x:1001:
+Bibek:x:1002:
+pankaj:x:1003:
+dinesh:x:1004:
+root@ubuntu:~#
+
+
+
+
+ Add user to group:
+====================
+
+usermod -aG group-name username
+
+root@ubuntu:~#
+root@ubuntu:~# groupadd sameer
+root@ubuntu:~#
+root@ubuntu:~#
+root@ubuntu:~# usermod -aG sameer aksjay
+usermod: user 'aksjay' does not exist
+root@ubuntu:~# usermod -aG sameer akshay
+root@ubuntu:~#
+root@ubuntu:~#
+root@ubuntu:~# cat /etc/group
+root:x:0:
+daemon:x:1:
+bin:x:2:
+sys:x:3:
+adm:x:4:syslog,sumit
+tty:x:5:
+akshay:x:1005:
+sameer:x:1006:akshay
+root@ubuntu:~#
+
+
+
+
+
+Remove user from group:
+===========================
+
+gpasswd -d username group-name
+
+
+
+root@ubuntu:~# gpasswd -d akshay sameer
+Removing user akshay from group sameer
+root@ubuntu:~#
+root@ubuntu:~#
+root@ubuntu:~#
+root@ubuntu:~# cat /etc/group
+root:x:0:
+daemon:x:1:
+bin:x:2:
+dinesh:x:1004:
+akshay:x:1005:
+sameer:x:1006:
+root@ubuntu:~#
+
+
+
+Rename group:
+===================
+
+groupmod -n newgroup oldgroup
+
+
+
+root@ubuntu:~# groupmod -n om sameer
+root@ubuntu:~#
+root@ubuntu:~#
+root@ubuntu:~#
+root@ubuntu:~# cat /etc/group
+root:x:0:
+daemon:x:1:
+bin:x:2:
+sys:x:3:
+uuidd:x:114:
+tcpdump:x:115:
+tss:x:116:
+landscape:x:117:
+fwupd-refresh:x:118:
+sumit:x:1000:
+gyana:x:1001:
+Bibek:x:1002:
+pankaj:x:1003:
+dinesh:x:1004:
+akshay:x:1005:
+om:x:1006:
+root@ubuntu:~#
+
+
+
+
+
+Delete group:
+====================
+
+
+groupdel group-name
+
+
+
+root@ubuntu:~# groupdel om
+root@ubuntu:~#
+root@ubuntu:~#
+
+
+
+
+
+FILE PERMISION
+==================================
+root@ubuntu:~# touch f1.txt
+root@ubuntu:~# ls -ltr
+total 0
+
+
+root@ubuntu:~# ls -ltr
+total 4
+-rw-r--r-- 1 root root    0 Feb  3 07:16 f1.txt
+drwxr-xr-x 2 root root 4096 Feb  3 07:18 dir1
+
+
+
+// u-g-o-
+
+
+
+change file permission in Linux
+====================================
+
+
+
+To change the file permission in Linux we can use a command in Linux i.e "chmod".
+
+
+'+' used to add permission 
+'-' used to remove permission
+
+
+add execute permission to user 
+----------------------------------
+
+
+root@ubuntu:~# ls -ltr
+total 4
+-rw-r--r-- 1 root root    0 Feb  3 07:16 f1.txt
+drwxr-xr-x 2 root root 4096 Feb  3 07:18 dir1
+
+root@ubuntu:~# chmod u+x f1.txt
+
+
+
+root@ubuntu:~# ls -ltr
+total 4
+-rwxr--r-- 1 root root    0 Feb  3 07:16 f1.txt
+drwxr-xr-x 2 root root 4096 Feb  3 07:18 dir1
+
+
+delete permission from user
+---------------------------------
+root@ubuntu:~# ls -ltr
+total 4
+-rwxr--r-- 1 root root    0 Feb  3 07:16 f1.txt
+drwxr-xr-x 2 root root 4096 Feb  3 07:18 dir1
+
+
+root@ubuntu:~# chmod u-w f1.txt
+
+
+root@ubuntu:~# ls -ltr
+total 4
+-r-xr--r-- 1 root root    0 Feb  3 07:16 f1.txt
+drwxr-xr-x 2 root root 40
+
+
+add other to execute permission
+-----------------------------------
+root@ubuntu:~# ls -ltr
+total 4
+-r-xr--r-- 1 root root    0 Feb  3 07:16 f1.txt
+drwxr-xr-x 2 root root 4096 Feb  3 07:18 dir1
+
+
+
+root@ubuntu:~# chmod o+x f1.txt
+
+
+
+root@ubuntu:~# ls -ltr
+total 4
+-r-xr--r-x 1 root root    0 Feb  3 07:16 f1.txt
+drwxr-xr-x 2 root root 4096 Feb  3 07:18 dir1
+
+
+add write permission to group
+-------------------------------
+
+root@ubuntu:~# ls -ltr
+total 4
+-r-xr--r-x 1 root root    0 Feb  3 07:16 f1.txt
+drwxr-xr-x 2 root root 4096 Feb  3 07:18 dir1
+root@ubuntu:~# chmod g+w f1.txt
+root@ubuntu:~# ls -ltr
+total 4
+-r-xrw-r-x 1 root root    0 Feb  3 07:16 f1.txt
+drwxr-xr-x 2 root root 4096 Feb  3 07:18 dir1
+root@ubuntu:~#
+
+
+add read and write permission to other
+-----------------------------------------
+root@ubuntu:~# chmod o+wr f1.txt
+root@ubuntu:~# ls -ltr
+total 4
+-r-xrw-rwx 1 root root    0 Feb  3 07:16 f1.txt
+drwxr-xr-x 2 root root 4096 Feb  3 07:18 dir1
+root@ubuntu:~#
+
+
+
+more permission in one command we cannot provide
+------------------------------------------------
+//we can change permission only to a user or a group or otrher
+root@ubuntu:~# chmod o-wr g-x f1.txt
+chmod: cannot access 'g-x': No such file or directory
+root@ubuntu:~# chmod g-x o-wr f1.txt
+chmod: cannot access 'o-wr': No such file or directory
+
+
+
+
+
+
+ 
+
+
+
+
+
