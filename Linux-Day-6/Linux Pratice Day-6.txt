@@ -1,0 +1,170 @@
+Package Management in Linux
+==============================
+1)It is used to install software in Linux.
+2)We have several package management in Linux.
+
+
+
+
+eg:
+
+
+amazon  Linux used "yum"  package management
+
+
+ubuntu  Linux used "apt"  package management
+
+centos  Linux used "dfg"  package management
+
+ centos  Linux used "yum"  package management (latesly used yum)
+
+red hat   Linux used "yum"  package management
+
+
+yum: yellow dog update & modified 
+apt: advanced package tool
+dfg:dangified  yum package
+
+
+
+
+
+
+Install java/python / on amazon Linux
+-----------------------------------------
+
+*      sudo yum install java/pyrhon
+
+
+Install python/java/maven on ubuntu
+-------------------------------------
+
+*     sudo apt install python
+
+
+
+sumit@ubuntu:~$ sudo apt install python
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+Package python is not available, but is referred to by another package.
+This may mean that the package is missing, has been obsoleted, or
+is only available from another source
+However the following packages replace it:
+  2to3 python2-minimal python2 dh-python python-is-python3
+
+
+
+Check the packages which we install
+-------------------------------------
+
+whereis java
+where python
+where is maven
+
+
+
+
+sumit@ubuntu:~$ whereis java
+java: /usr/share/java
+sumit@ubuntu:~$
+
+
+
+what is sudoers file ?
+------------------------
+
+
+
+
+1. this is file in Linux like other file.
+2.it helps to manage what a user and what a user group can do on the Linux.
+3.we can see that file below command
+
+
+command:   sudo cat /etc/sudoers 
+
+
+
+
+sumit@ubuntu:~$
+sumit@ubuntu:~$  sudo cat /etc/sudoers
+#
+# This file MUST be edited with the 'visudo' command as root.
+#
+# Please consider adding local content in /etc/sudoers.d/ instead of
+# directly modifying this file.
+#
+# See the man page for details on how to write a sudoers file.
+#
+Defaults        env_reset
+Defaults        mail_badpass
+Defaults        secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
+Defaults        use_pty
+
+# This preserves proxy settings from user environments of root
+# equivalent users (group sudo)
+#Defaults:%sudo env_keep += "http_proxy https_proxy ftp_proxy all_proxy no_proxy"
+
+# This allows running arbitrary commands, but so does ALL, and it means
+# different sudoers have their choice of editor respected.
+#Defaults:%sudo env_keep += "EDITOR"
+
+# Completely harmless preservation of a user preference.
+#Defaults:%sudo env_keep += "GREP_COLOR"
+
+# While you shouldn't normally run git as root, you need to with etckeeper
+#Defaults:%sudo env_keep += "GIT_AUTHOR_* GIT_COMMITTER_*"
+
+# Per-user preferences; root won't have sensible values for them.
+#Defaults:%sudo env_keep += "EMAIL DEBEMAIL DEBFULLNAME"
+
+# "sudo scp" or "sudo rsync" should be able to use your SSH agent.
+#Defaults:%sudo env_keep += "SSH_AGENT_PID SSH_AUTH_SOCK"
+
+# Ditto for GPG agent
+#Defaults:%sudo env_keep += "GPG_AGENT_INFO"
+
+# Host alias specification
+
+# User alias specification
+
+# Cmnd alias specification
+
+# User privilege specification
+root    ALL=(ALL:ALL) ALL
+
+# Members of the admin group may gain root privileges
+%admin ALL=(ALL) ALL
+
+# Allow members of group sudo to execute any command
+%sudo   ALL=(ALL:ALL) ALL
+
+# See sudoers(5) for more information on "@include" directives:
+
+@includedir /etc/sudoers.d
+
+
+
+
+
+
+sudo :super user do
+
+
+by default thereis a sudo user in every Linux os is not but "root".
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
