@@ -1,0 +1,510 @@
+Numeric Format 
+================
+
+
+
+File permission in numeric format
+-----------------------------------
+
+777:r+w+x (all)   ugo
+
+111:x (all) ugo
+
+222: w (all) ugo 
+
+333 :w+x(all) ugo  {1+2}
+
+0: no permission
+1:x
+2:w
+3:w+x
+4: r
+5:r+x
+6:r+w
+444: r (all) ugo
+
+555: r+x (all) {4+1}
+
+666:r+w(all)   {4+2}
+777:r+w+x     {4+2+1}
+
+
+
+
+Working with chown command
+--------------------------------
+
+
+change the  user of a file
+...............................
+
+1. create a fil
+------------------
+sumit@ubuntu:~$
+sumit@ubuntu:~$ touch abc.txt
+sumit@ubuntu:~$
+sumit@ubuntu:~$
+sumit@ubuntu:~$ ls -ltr
+total 0
+-rw-rw-r-- 1 sumit sumit 0 Feb  4 03:36 abc.txt
+
+
+//here sumit is the user 
+
+//create a ner user
+sumit@ubuntu:~$ adduser mangulu
+adduser: Only root may add a user or group to the system.
+sumit@ubuntu:~$ sudo adduser mangulu
+[sudo] password for sumit:
+
+
+sumit@ubuntu:~$ cat /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+
+lxd:x:999:100::/var/snap/lxd/common/lxd:/bin/false
+akshay:x:1001:1005:,,,:/home/akshay:/bin/bash
+mangulu:x:1002:1006:,,,:/home/mangulu:/bin/bash
+
+//change user by chown command
+
+sumit@ubuntu:~$ sudo  chown mangulu abc.txt
+
+
+//now user changed
+
+
+sumit@ubuntu:~$ ls -ltr abc.txt
+-rw-rw-r-- 1 mangulu sumit 0 Feb  4 03:36 abc.txt
+
+
+
+
+
+change the  group of a file
+...............................
+
+
+//create a group
+-------------------
+sumit@ubuntu:~$ sudo groupadd kanhu
+
+
+
+sumit@ubuntu:~$ cat /etc/group
+root:x:0:
+daemon:x:1:
+bin:x:2:
+sys:x:3:
+adm:x:4:syslog,sumit
+tty:x:5:
+disk:x:6:
+lp:x:7:
+
+mangulu:x:1006:
+kanhu:x:1007:
+
+
+
+//again use chown command to change the group
+
+
+sumit@ubuntu:~$ sudo  chown :kanhu abc.txt
+
+
+sumit@ubuntu:~$ ls -ltr abc.txt
+-rw-rw-r-- 1 mangulu kanhu 0 Feb  4 03:36 abc.txt
+
+
+
+
+Hard Links & soft link
+-------------------------------
+*  It is similar to the shortcut in windows.
+
+
+
+2 type are there
+
+
+1)Hard Links (ln)
+2)Soft links (ln -s)
+
+
+Hard Link
+=============
+
+command:sudo ln filename linkedfilename
+
+
+sumit@ubuntu:~$ sudo ln xyz.txt link.txt
+
+
+//new linked file is created
+
+
+sumit@ubuntu:~$ ls -ltr
+total 8
+-rw-rw-r-- 2 sumit sumit 24 Feb  4 04:09 xyz.txt
+-rw-rw-r-- 2 sumit sumit 24 Feb  4 04:09 link.txt
+sumit@ubuntu:~$ ls
+link.txt  xyz.txt
+sumit@ubuntu:~$
+
+
+
+//Linked file copy all the data also
+------------------------------------
+
+sumit@ubuntu:~$ cat xyz.txt
+This is my xyz.txt file
+
+
+sumit@ubuntu:~$ cat link.txt
+This is my xyz.txt file
+
+
+//If we edit in main file then hard link file also taken the edited data
+-------------------------------------------------------------------------
+sumit@ubuntu:~$ vi xyz.txt
+sumit@ubuntu:~$ cat xyz.txt
+This is my xyz.txt file
+I am a boy
+
+sumit@ubuntu:~$ cat link.txt
+This is my xyz.txt file
+I am a boy
+
+//If we change in the Hard link file it also change on  main file
+
+sumit@ubuntu:~$
+sumit@ubuntu:~$ vi link.txt
+
+
+sumit@ubuntu:~$ cat link.txt
+This is my xyz.txt file
+I am a boy
+she is a girl
+
+sumit@ubuntu:~$ cat xyz.txt
+This is my xyz.txt file
+I am a boy
+she is a girl
+sumit@ubuntu:~$
+
+
+
+File delete operation
+---------------------------
+//after deletion on the main file we can perform operation
+
+
+
+sumit@ubuntu:~$
+sumit@ubuntu:~$ vi link.txt
+
+
+sumit@ubuntu:~$ cat link.txt
+This is my xyz.txt file
+I am a boy
+she is a girl
+
+sumit@ubuntu:~$ cat xyz.txt
+This is my xyz.txt file
+I am a boy
+she is a girl
+sumit@ubuntu:~$
+
+
+// By the use of inode number we can see which file is linked to which file
+
+//here 390932 is the inode number
+
+
+sumit@ubuntu:~$ ls -li
+total 0
+390932 -rw-rw-r-- 2 sumit sumit 0 Feb  4 04:28 link.txt
+390932 -rw-rw-r-- 2 sumit sumit 0 Feb  4 04:28 xyz.txt
+sumit@ubuntu:~$
+
+
+
+
+Soft link 
+----------------
+
+
+command :sudo ln -s filename  softlinkfilename
+
+
+
+
+mnp.txt
+sumit@ubuntu:~$ sudo ln -s mnp.txt   qrs.txt
+sumit@ubuntu:~$
+sumit@ubuntu:~$
+sumit@ubuntu:~$ ls
+mnp.txt  qrs.txt
+
+
+
+
+
+// If we edit on the main file it also reflect on the soft linked file
+
+
+sumit@ubuntu:~$
+sumit@ubuntu:~$ vi mnp.txt
+sumit@ubuntu:~$
+sumit@ubuntu:~$
+sumit@ubuntu:~$ cat mnp.txt
+I eat food
+sumit@ubuntu:~$ cat qrs.txt
+I eat food
+sumit@ubuntu:~$
+
+
+///after deletion perform
+-------------------------------
+after main file deletion then soft linked file is unable to perform any operation .
+
+sumit@ubuntu:~$ cat qrs.txt
+I eat food
+
+
+sumit@ubuntu:~$
+sumit@ubuntu:~$ rm -r mnp.txt
+
+sumit@ubuntu:~$ ls
+qrs.txt
+sumit@ubuntu:~$ cat qrs.txt
+cat: qrs.txt: No such file or directory
+sumit@ubuntu:~$
+
+
+
+
+//hot to check ip configurastion
+------------------------------------
+
+
+windows:ipconfig
+Linux:-ifconfig, ip a
+
+
+
+
+sumit@ubuntu:~$ ifconfig
+enp0s3: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 10.0.2.15  netmask 255.255.255.0  broadcast 10.0.2.255
+        inet6 fe80::a00:27ff:fe48:95d8  prefixlen 64  scopeid 0x20<link>
+        ether 08:00:27:48:95:d8  txqueuelen 1000  (Ethernet)
+        RX packets 46822  bytes 64153843 (64.1 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 5378  bytes 502991 (502.9 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 7994  bytes 570098 (570.0 KB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 7994  bytes 570098 (570.0 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+
+
+To check connectivity
+---------------------------
+
+
+command:sudo ping <site name>
+--------------------------------
+
+
+sumit@ubuntu:~$ sudo ping www.google.com
+PING www.google.com (142.251.43.36) 56(84) bytes of data.
+64 bytes from bkk02s01-in-f4.1e100.net (142.251.43.36): icmp_seq=1 ttl=116 time=78.4 ms
+64 bytes from pnmaaa-av-in-f4.1e100.net (142.251.43.36): icmp_seq=2 ttl=116 time=202 ms
+64 bytes from bkk02s01-in-f4.1e100.net (142.251.43.36): icmp_seq=3 ttl=116 time=121 ms
+64 bytes from pnmaaa-av-in-f4.1e100.net (142.251.43.36): icmp_seq=4 ttl=116 time=145 ms
+^C
+--- www.google.com ping statistics ---
+5 packets transmitted, 4 received, 20% packet loss, time 4008ms
+rtt min/avg/max/mdev = 78.374/136.462/202.238/44.769 ms
+sumit@ubuntu:~$
+
+
+
+To download files using url
+----------------------------------
+wget <url>
+ wget http---.zip
+
+
+To send request to url
+---------------------------
+
+command:  curl <url>
+
+
+
+To get memorydetails of Linux machine
+---------------------------------------
+free: display the memory details
+
+
+sumit@ubuntu:~$ free
+               total        used        free      shared  buff/cache   available
+Mem:         3234464      218328     2289168        1124      726968     2849252
+Swap:        3100668           0     3100668
+sumit@ubuntu:~$
+
+
+
+top : display background details
+
+
+sumit@ubuntu:~$
+sumit@ubuntu:~$ top
+top - 05:30:33 up  2:14,  2 users,  load average: 0.00, 0.00, 0.00
+Tasks: 114 total,   1 running, 113 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.0 us,  0.2 sy,  0.0 ni, 99.8 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+MiB Mem :   3158.7 total,   2235.5 free,    213.1 used,    710.1 buff/cache
+MiB Swap:   3028.0 total,   3028.0 free,      0.0 used.   2782.6 avail Mem
+
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
+   2526 sumit     20   0   10476   3936   3248 R   0.7   0.1   0:00.04 top
+   2054 root      20   0       0      0      0 I   0.3   0.0   0:00.34 kworker/u4:3-events_power_efficient
+   2064 root      20   0       0      0      0 I   0.3   0.0   0:02.38 kworker/1:2-events
+      1 root      20   0  167736  13136   8348 S   0.0   0.4   0:02.86 systemd
+      2 root      20   0       0      0      0 S   0.0   0.0   0:00.01 kthreadd
+      3 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 rcu_gp
+      4 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 rcu_par_gp
+      5 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 slub_flushwq
+      6 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 netns
+      8 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker/0:0H-events_highpri
+     10 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 mm_percpu_wq
+     11 root      20   0       0      0      0 S   0.0   0.0   0:00.00 rcu_tasks_rude_
+     12 root      20   0       0      0      0 S   0.0   0.0   0:00.00 rcu_tasks_trace
+     13 root      20   0       0      0      0 S   0.0   0.0   0:00.11 ksoftirqd/0
+     14 root      20   0       0      0      0 I   0.0   0.0   0:01.76 rcu_sched
+     15 root      rt   0       0      0      0 S   0.0   0.0   0:00.08 migration/0
+     16 root     -51   0       0      0      0 S   0.0   0.0   0:00.00 idle_inject/0
+     18 root      20   0       0      0      0 S   0.0   0.0   0:00.00 cpuhp/0
+     19 root      20   0       0      0      0 S   0.0   0.0   0:00.00 cpuhp/1
+     20 root     -51   0       0      0      0 S   0.0   0.0   0:00.00 idle_inject/1
+     21 root      rt   0       0      0      0 S   0.0   0.0   0:00.29 migration/1
+     22 root      20   0       0      0      0 S   0.0   0.0   0:00.09 ksoftirqd/1
+     24 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker/1:0H-events_highpri
+     25 root      20   0       0      0      0 S   0.0   0.0   0:00.00 kdevtmpfs
+     26 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 inet_frag_wq
+     27 root      20   0       0      0      0 S   0.0   0.0   0:00.00 kauditd
+     28 root      20   0       0      0      0 S   0.0   0.0   0:00.00 khungtaskd
+     29 root      20   0       0      0      0 S   0.0   0.0   0:00.00 oom_reaper
+     30 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 writeback
+     31 root      20   0       0      0      0 S   0.0   0.0   0:00.32 kcompactd0
+     32 root      25   5       0      0      0 S   0.0   0.0   0:00.00 ksmd
+     33 root      39  19       0      0      0 S   0.0   0.0   0:00.00 khugepaged
+     80 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kintegrityd
+     81 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kblockd
+
+
+
+
+htop : display background details with dynamic view
+
+
+cat /etc/os-release  :display the os details   (it is like windows about)
+
+
+
+sumit@ubuntu:~$ cat /etc/os-release
+PRETTY_NAME="Ubuntu 22.04.5 LTS"
+NAME="Ubuntu"
+VERSION_ID="22.04"
+VERSION="22.04.5 LTS (Jammy Jellyfish)"
+VERSION_CODENAME=jammy
+ID=ubuntu
+ID_LIKE=debian
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+UBUNTU_CODENAME=jammy
+sumit@ubuntu:~$ 
+
+
+
+
+uname -r : it will show the kernel version
+
+
+sumit@ubuntu:~$ uname -r
+5.15.0-168-generic
+sumit@ubuntu:~$
+
+lastlog : show the particular machine last logged by with which user 
+
+sumit@ubuntu:~$ lastlog
+Username         Port     From             Latest
+root                                       **Never logged in**
+daemon                                     **Never logged in**
+bin                                        **Never logged in**
+sys                                        **Never logged in**
+sync                                       **Never logged in**
+games                                      **Never logged in**
+man                                        **Never logged in**
+lp                                         **Never logged in**
+mail                                       **Never logged in**
+news                                       **Never logged in**
+uucp                                       **Never logged in**
+proxy                                      **Never logged in**
+www-data                                   **Never logged in**
+backup                                     **Never logged in**
+list                                       **Never logged in**
+irc                                        **Never logged in**
+gnats                                      **Never logged in**
+nobody                                     **Never logged in**
+_apt                                       **Never logged in**
+systemd-network                            **Never logged in**
+systemd-resolve                            **Never logged in**
+messagebus                                 **Never logged in**
+systemd-timesync                           **Never logged in**
+pollinate                                  **Never logged in**
+syslog                                     **Never logged in**
+uuidd                                      **Never logged in**
+tcpdump                                    **Never logged in**
+tss                                        **Never logged in**
+landscape                                  **Never logged in**
+fwupd-refresh                              **Never logged in**
+usbmux                                     **Never logged in**
+sshd                                       **Never logged in**
+sumit            pts/0    10.0.2.2         Wed Feb  4 03:17:52 +0000 2026
+lxd                                        **Never logged in**
+akshay                                     **Never logged in**
+mangulu                                    **Never logged in**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
